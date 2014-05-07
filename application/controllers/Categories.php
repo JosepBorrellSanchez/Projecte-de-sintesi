@@ -26,6 +26,15 @@ class Categories extends CI_Controller {
                 if($name != null)
                 $this->mod_categories->insertCategoria($name, $slug, $descripcio);
 }
+
+	function json()
+    {
+        $data['json'] = $this->mod_categories->getCategories();
+        if (!$data['json']) show_404();
+
+        $this->load->view('json_view', $data);
+    }
+    
 	public function modificar()
 	{
 		

@@ -4,16 +4,18 @@ class Productes extends CI_Controller {
 	function __construct()
     {
         parent::__construct();
-        $this->load->model('mod_productes');
+        
         $this->load->model('mod_categories');
+        $this->load->model('mod_productes');
         $this->load->helper('url');
     }
 // fer un vector i recorrel en lo for each, ha de portar 
 // l'objecte persona 
-	public function listusers()
+	public function llistar()
 	{	
-		$users ['query'] = $this->users->getProducte();
-		$this->load->view('list', $users);
+		$users ['query'] = $this->mod_productes->getProducte();
+		$this->load->view('llistaproductes', $users);
+		
 	}
 	
 	public function listcategories()
@@ -81,6 +83,7 @@ return $url;
                 $this->users->deleteProducte($ID);
                 $this->load->view('eliminar'); 
 }
+
 
 	public function grocery()
 	{
